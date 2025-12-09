@@ -8,68 +8,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="estilo.css">
 
 <title>Trabalho: Eletrólise</title>
 
-<style>
 
-body {
-margin: 0;
-background: white;
-font-family:Arial, Helvetica, sans-serif
-}
-header {
-color: lightyellow;
-background-color: #0f3b46;
-padding: 20px;
-text-align: center;
-}
-
-h1 {
-color: white;
-margin: 0;
-}
-
-h2{
-color: white;
-margin: 0;
-font-size:medium;
-}.nome{
-color: rgb(250, 250, 144);
-font-weight: bold;
-}.titulo{
-    font-weight: bold;
-color: gold;
-}.li-ap{
-    font-size: 1.1em;
-    padding-left: 40px; 
-}.li-ap li{
-    margin-bottom: 10px;
-    font-weight: bold; 
-}
-
-a{
-    color: black;
-}
-
-.eletrolise_foto{
-   display: block; 
-    margin-left: auto; 
-    margin-right: auto; 
-    max-width: 100%; 
-    height: auto; 
-}
-
-.texto_inicial {
-    text-align:left
-}
-
-.bem_vindo {
-    font-size: 40px;
-}
-
-</style>
 </head>
 <body>
 <header>
@@ -80,27 +23,84 @@ a{
 </header>
 <p>
     <p class="texto_inicial">
-    <span class="bem_vindo">Bem-vindos ao nosso guia interativo sobre <b>Eletrólise</b></span> <br>
+    <span class="bem_vindo">Bem-vindos ao nosso guia interativo sobre <b>Eletrólise</b></span> 
     <br>
-    Este é um <b>processo eletroquímico</b> não espontâneo que utiliza energia elétrica para forçar a ocorrência de reações de oxirredução, <br>
-    sendo fundamental na indústria moderna.
+    <span class="texto_processo">Este é um <b>processo eletroquímico</b> não espontâneo que utiliza energia elétrica para forçar a ocorrência de reações de oxirredução, <br>
+    sendo fundamental na indústria moderna.</span>
 </p>
     <br> <br> 
-    <img src="" alt="" class="eletrolise_foto">
+    <img src="Eletrólise.jpg" alt="" class="eletrolise_foto">
     <br> <br>
-    Neste trabalho, apresentaremos e explicaremos a Eletrólise de forma didática e variada, explorando suas aplicações essenciais, como a produção de alumínio e o revestimento de metais (galvanoplastia).
+    <span class="texto_processo">Neste trabalho, apresentaremos e explicaremos a <b>Eletrólise</b> de forma didática e variada, explorando suas aplicações essenciais, como a produção de alumínio e o revestimento de metais (galvanoplastia).</span>
 </p>
 
 <div class="li-ap"> Este projeto conta com as seguintes formas de apresentação:
 <h2>Conteúdo do Projeto: Escolha Sua Abordagem</h2>
     <p>Utilize os links abaixo para navegar pelas diferentes formas de apresentação desenvolvidas pelo nosso grupo:</p>
     <ol class="li-ap">
-        <li>📺Mini-documentário (Vídeo explicativo e aplicações)</li>
+        <li><a href="#" id="abrir-documentario">📺Mini-documentário (Vídeo explicativo e aplicações)</a></li>
         <li>🧪Experimento Prático (Detalhes da montagem e resultados)</li>
-        <li><a href="https://www.google.com/search?q=jogo+digital">🎮Jogo Digital (Quiz interativo sobre conceitos e Leis de Faraday)</a></li>
+        <li><a href="https://www.google.com/search?q=jogo+digital" target="_blank" rel="noopener noreferrer">🎮Jogo Digital (Quiz interativo sobre conceitos e Leis de Faraday)</a></li>
     </ol>
-    
 </div>
+
+<div id="modal-documentario" class="modal">
+    <div class="modal-overlay"></div>
+    
+    <div class="modal-content">
+        <span class="close-btn" id="fechar-documentario">&times;</span>
+        
+        <div class="video-container">
+            <iframe id="video-frame" 
+            src="" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+    </iframe>
+</div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const abrirBtn = document.getElementById('abrir-documentario');
+    const fecharBtn = document.getElementById('fechar-documentario');
+    const modal = document.getElementById('modal-documentario');
+    const videoFrame = document.getElementById('video-frame');
+
+const embedUrl = "https://drive.google.com/file/d/1V_8W9a00vqTZ6J9sonBjU0UvNXRe8P6n/preview";
+    abrirBtn.addEventListener('click', function(e) {
+        e.preventDefault(); 
+       
+        modal.classList.add('is-visible');
+        
+        videoFrame.src = embedUrl;
+
+        fecharBtn.focus();
+    });
+
+    const fecharModal = () => {
+        modal.classList.remove('is-visible');
+        
+        videoFrame.src = "";
+    };
+
+    fecharBtn.addEventListener('click', fecharModal);
+
+    modal.addEventListener('click', function(e) {
+        if (e.target.id === 'modal-documentario' || e.target.classList.contains('modal-overlay')) {
+            fecharModal();
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-visible')) {
+            fecharModal();
+        }
+    });
+});
+</script>
+
 
 </body>
 
